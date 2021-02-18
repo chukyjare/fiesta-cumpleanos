@@ -1,4 +1,7 @@
+import { HomeControlService } from './home-control.service';
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Validacion } from '../core/model/validacion';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +9,21 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  constructor() {}
-
+  
+  ejemploForm: FormGroup;
+  validationMessages;
+  nombre: string;
+  pseudonimo: string;
+  edad:number
+  estiloMusical:string;
+  
+  
+  constructor(private homeControlService: HomeControlService) {
+    this.ejemploForm = this.homeControlService.ejemploForm;
+    this.validationMessages = this.homeControlService.validationMessages;
+  }
+  getErrorMessage(control, error) {
+    return this.homeControlService.getErrorMessage(control, error);
+  }
+  
 }

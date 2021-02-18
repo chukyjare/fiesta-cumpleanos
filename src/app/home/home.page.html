@@ -1,20 +1,85 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Fiesta de Cumpleaños </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- ES una etiqueta de Angular -->
+  <form [formGroup]="ejemploForm">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-item>
+      <ion-label floating>Nombre:</ion-label>
+      <ion-input
+        [(ngModel)]="nombre"
+        formControlName="nombreEntrada"
+      ></ion-input>
+      <ion-label>is valid {{ejemploForm.get('nombreEntrada').valid}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label
+        *ngIf="ejemploForm.get('nombreEntrada').dirty && !ejemploForm.get('nombreEntrada').valid"
+      >
+        {{getErrorMessage('nombreEntrada',ejemploForm.get('nombreEntrada').errors)}}
+        <!-- {{ejemploForm.get('nombreEntrada').errors.minlength|json}} -->
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Pseudónimo:</ion-label>
+      <ion-input
+        [(ngModel)]="pseudonimo"
+        formControlName="pseudoEntrada"
+      ></ion-input>
+      <ion-label>is valid {{ejemploForm.get('pseudoEntrada').valid}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label
+        *ngIf="ejemploForm.get('pseudoEntrada').dirty && !ejemploForm.get('pseudoEntrada').valid"
+      >
+        {{getErrorMessage('pseudoEntrada',ejemploForm.get('pseudoEntrada').errors)}}
+        <!-- {{ejemploForm.get('nombreEntrada').errors.minlength|json}} -->
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Edad:</ion-label>
+      <ion-input
+        [(ngModel)]="edad"
+        formControlName="edadMinima"
+      ></ion-input>
+      <ion-label>is valid {{ejemploForm.get('edadMinima').valid}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label
+        *ngIf="ejemploForm.get('edadMinima').dirty && !ejemploForm.get('edadMinima').valid"
+      >
+        {{getErrorMessage('edadMinima',ejemploForm.get('edadMinima').errors)}}
+        <!-- {{ejemploForm.get('nombreEntrada').errors.minlength|json}} -->
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Estilo Musical:</ion-label>
+      <ion-input
+        [(ngModel)]="estiloMusical"
+        formControlName="estiloMusical"
+      ></ion-input>
+      <ion-label>is valid {{ejemploForm.get('estiloMusical').valid}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label
+        *ngIf="ejemploForm.get('estiloMusical').dirty && !ejemploForm.get('estiloMusical').valid"
+      >
+        {{getErrorMessage('estiloMusical',ejemploForm.get('estiloMusical').errors)}}
+        <!-- {{ejemploForm.get('nombreEntrada').errors.minlength|json}} -->
+      </ion-label>
+    </ion-item>
+
+
+  </form>
 </ion-content>
